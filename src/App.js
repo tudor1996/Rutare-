@@ -4,7 +4,8 @@ import Despre from "./despre";
 import NotFound from "./NotFound"
 import Container from "react-bootstrap/Container";
 import ListGroup from "react-bootstrap/ListGroup";
-import { Route, NavLink, Switch } from "react-router-dom";
+import Evenimente from "./evenimente";
+import { Route, NavLink, Switch,Link } from "react-router-dom";
 
 
 function App() {
@@ -17,6 +18,21 @@ function App() {
     <ListGroup.Item>
       <NavLink exact to="/" activeStyle={activ}>Home</NavLink>
     </ListGroup.Item>
+
+    <ListGroup.Item>
+      <NavLink exact to="/evenimente" activeStyle={activ} >Evenimente</NavLink>
+      <ul>
+        <li>
+          <Link to="/evenimente/1"> <b>UNTOLD 2021</b> </Link>
+        </li>
+        <li>
+          <Link to="/evenimente/2"> <b>NEVERSEA</b> </Link>
+        </li>
+        <li>
+          <Link to="/evenimente/3"> <b>Zilele Orasului</b> </Link>
+        </li>
+      </ul>
+    </ListGroup.Item>
     <ListGroup.Item>
       <NavLink to="/despre" activeStyle={activ}>Despre</NavLink>
     </ListGroup.Item>
@@ -25,6 +41,7 @@ function App() {
         <Route exact path="/"> 
           <Home />
         </Route>
+        <Route exact path={["/evenimente", "/evenimente/:idActivitate"]} component={Evenimente} />
         <Route path="/despre">
           <Despre />
         </Route>
